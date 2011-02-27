@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="common.js"></script>
+		<script type="text/javascript" src="keys.js"></script>
+		<script type="text/javascript" src="objects.js"></script>
+		<script type="text/javascript" src="active.js"></script>
+		<script type="text/javascript" src="ai.js"></script>
+		<script type="text/javascript" src="generator.js"></script>
+		<script type="text/javascript" src="editor.js"></script>
+		<script type="text/javascript" src="init.js"></script>
+		<script type="text/javascript" src="terrain.js"></script>
+		<script type="text/javascript" src="blocks.js"></script>
+		<script type="text/javascript" src="database.js"></script>
+		<script type="text/javascript" src="optimize.js"></script>
+		<script type="text/javascript" src="player.js"></script>
+		<script type="text/javascript" src="interface.js"></script>
+		<script type="text/javascript" src="save.js"></script>
+		<script type="text/javascript" src="npc.js"></script>
+		<style type="text/css">
+			body
+			{
+				background-color: #ffffff;
+				overflow:hidden;
+				margin: 0px 0px 0px 0px;
+			}
+			#source
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background-color: #dddddd;
+				font-family: monospace;
+				width: 600px;
+				height: 600px;
+				display: none;
+				overflow: scroll;
+			}
+			#add
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background-color: #dddddd;
+				font-family: monospace;
+				width: 600px;
+				height: 600px;
+				display: none;
+			}
+			#edit
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background-color: #dddddd;
+				font-family: monospace;
+				width: 200px;
+				height: 400px;
+				display: none;
+				overflow: scroll;
+			}
+			#terrain
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				background-color: #dddddd;
+				font-family: monospace;
+				width: 200px;
+				height: 400px;
+				display: none;
+				overflow: scroll;
+			}
+		</style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>
+			Lab
+		</title>
+	</head>
+	<body onload="initEditor()" onkeydown="changeKey(event.keyCode, true)" onkeyup="changeKey(event.keyCode, false)"  onmousemove="mouseMove(event)"
+		onmousedown="mouseClick()" onmouseup="mouseRelease()">
+		<noscript>
+			You have JavaScript turned off...<br>
+		</noscript>
+		<canvas id="screen" width="1100" height="1200">
+			Your browser doesn't support Canvas :( <br>
+		</canvas>
+		<div id="source">
+		</div>
+		<div id="edit">
+			Width: <input id="w" onchange="changeEdit()"><br>
+			Height: <input id="h" onchange="changeEdit()"><br>
+			Depth: <input id="d" onchange="changeEdit()"><br>
+			Image: <input id="src" onchange="changeEdit()"><br>
+			<button onclick="editWin.style.display='none'">Done</button>
+		</div>
+		<div id="add">
+			<textarea id="compile"></textarea>
+			<button onclick="compile()">Compile</button>
+		</div>
+		<div id="terrain">
+			X: <input id="tx" onchange="changeEdit2()"><br>
+			Y: <input id="ty" onchange="changeEdit2()"><br>
+			Width: <input id="tw" onchange="changeEdit2()"><br>
+			Height: <input id="th" onchange="changeEdit2()"><br>
+			Source width: <input id="tsw" onchange="changeEdit2()"><br>
+			Source height: <input id="tsh" onchange="changeEdit2()"><br>
+			Image: <input id="tsrc" onchange="changeEdit2()"><br>
+			Color: <input id="tcolor" onchange="changeEdit2();this.style.backgroundColor=this.value"><br>
+			<button onclick="terrainWin.style.display='none'">Done</button>
+		</div>
+	</body>
+</html>

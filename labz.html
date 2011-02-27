@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="common.js"></script>
+		<script type="text/javascript" src="keys.js"></script>
+		<script type="text/javascript" src="objects.js"></script>
+		<script type="text/javascript" src="active.js"></script>
+		<script type="text/javascript" src="ai.js"></script>
+		<script type="text/javascript" src="generator.js"></script>
+		<script type="text/javascript" src="loop.js"></script>
+		<script type="text/javascript" src="database.js"></script>
+		<script type="text/javascript" src="init.js"></script>
+		<script type="text/javascript" src="terrain.js"></script>
+		<script type="text/javascript" src="blocks.js"></script>
+		<script type="text/javascript" src="monsters.js"></script>
+		<script type="text/javascript" src="optimize.js"></script>
+		<script type="text/javascript" src="player.js"></script>
+		<script type="text/javascript" src="interface.js"></script>
+		<script type="text/javascript" src="save.js"></script>
+		<script type="text/javascript" src="npc.js"></script>
+		<style type="text/css">
+			body
+			{
+				background-color: #ffffff;
+				overflow:hidden;
+				margin: 0px 0px 0px 0px;
+			}
+			#status
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 200px;
+				background-color: #ffFF00;
+				display: none;
+			}
+			#save
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 40px;
+				background-color: #ffFF00;
+				display: none;
+			}
+			#log
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 200px;
+				background-color: #ffFF00;
+				display: none;
+			}
+			#logout
+			{
+				width: 200px;
+				height: 200px;
+			}
+			#notification
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 200px;
+				background-color: #ffffff;
+				border: solid black 1px;
+			}
+			#dialog
+			{
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				width: 200px;
+				height: 200px;
+				background-color: #ffffff;
+				border: solid black 1px;
+				display: none;
+			}
+		</style>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>
+			Lab
+		</title>
+	</head>
+	<body onload="initGame()" onkeydown="changeKey(event.keyCode, true)" onkeyup="changeKey(event.keyCode, false)">
+		<noscript>
+			You have JavaScript turned off...<br>
+		</noscript>
+		<canvas id="screen" width="1100" height="1200">
+			Your browser doesn't support Canvas :( <br>
+		</canvas>
+		<div id="status"></div>
+		<div id="log">
+			<textarea id="logout"></textarea>
+		</div>
+		<div id="notification"></div>
+		<div id="save">
+			<input id="saveurl" style="width:180px" readonly="true"><br>
+			<button onclick="location.href=document.getElementById('saveurl').value">Go</button>
+		</div>
+		<div id="dialog"></div>
+		<div id="musicbox"></div>
+	</body>
+</html>
