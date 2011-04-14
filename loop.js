@@ -34,6 +34,7 @@ function loop()
 	playerControl();
 	//Active objects routines
 	fightingObjects = 0;
+	
 	for (i = 0; i < obj3.length; i++)
 	{
 		if (!freezeGame)

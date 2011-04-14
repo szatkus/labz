@@ -27,21 +27,10 @@ Terrain.prototype.draw = function()
 	{
 		if (showTerrain)
 		{
-		sx = this.x;
-		ex = this.x+this.w;
-		sy = this.y;
-		ey = this.y+this.h;
-		if (sx < cx) sx = this.x+Math.floor((cx-this.x)/this.sw)*this.sw;
-		if (ex > cx+canvas.width) ex = cx+canvas.width;
-		if (sy < cy) sy = this.y+Math.floor((cy-this.y)/this.sh)*this.sh;
-		if (ey > cy+canvas.height) ey = cy+canvas.height;
-		for (xx = sx; xx < ex; xx += this.sw)
-		{
-			for (yy = sy; yy < ey; yy += this.sh)
-			{
-				drawImage(this.img, xx, yy, this.sw, this.sh, 0);
-			}
-		}
+			this.img.width = this.sw;
+			this.img.height = this.sh;
+			context.fillStyle=context.createPattern(this.img, "repeat");
+			context.fillRect(this.x, this.y, this.w, this.h);
 		}
 		else
 		{
