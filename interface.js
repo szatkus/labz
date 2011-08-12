@@ -15,9 +15,9 @@ function showStatus()
 		statusWin.style.display = "inline";
 		newText = "<p>HP: "+currentStatus.HP+"/"+currentStatus.MaxHP+"<br>";
 		newText += "AP: "+currentStatus.ap+"<br>";
-		for (i11 = 0; i11 < currentStatus.blocks.length; i11++)
+		for (var i = 0; i < currentStatus.blocks.length; i++)
 		{
-			temp = currentStatus.blocks[i11];
+			temp = currentStatus.blocks[i];
 			newText += temp.name;
 			if (temp.level < temp.maxLevel) newText += " "+temp.exp+"/"+temp.getReqExp();
 			newText += " - lvl. "+temp.level+"+"+temp.bonusLevel+"<br>";
@@ -71,7 +71,7 @@ function drawProgress(a, b, x, y, w, h)
 
 function drawInterface()
 {
-	for (i = 0; i < floatingInfo.length; i++)
+	for (var i = 0; i < floatingInfo.length; i++)
 	{
 		floatingInfo[i].y -= 2;
 		floatingInfo[i].a -= 0.03;

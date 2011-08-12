@@ -46,8 +46,8 @@ function ActiveObject(name)
 	this.waypointX = new Array();
 	this.waypointY = new Array();
 	this.waypointD = new Array();
-	this.ai = function() {}
-	this.interact = function(a) {}
+	this.ai = function(){};
+	this.interact = function(a){};
 }
 
 ActiveObject.prototype = new GameObject();
@@ -83,16 +83,16 @@ ActiveObject.prototype.findBlock = function(name)
 		if (this.blocks[i15].name == name) return this.blocks[i15];
 	}
 	return nullBlock;
-}
+};
 
 ActiveObject.prototype.addExp = function(x)
 {
-	for (jxp = 0; jxp < this.blocks.length; jxp++) 
+	for (var i = 0; i < this.blocks.length; i++) 
 	{
-		this.blocks[jxp].user = this;
-		this.blocks[jxp].addExp(x);
+		this.blocks[i].user = this;
+		this.blocks[i].addExp(x);
 	}
-}
+};
 
 ActiveObject.prototype.move = function(angle)
 {
@@ -115,7 +115,7 @@ ActiveObject.prototype.action = function()
 	}
 	if (this.vx != 0)
 	{
-		for (iv = 1; iv <= Math.abs(this.vx); iv++)
+		for (var i = 1; i <= Math.abs(this.vx); i++)
 		{
 			if (this.vx > 0) this.x++;
 			else this.x--;
@@ -129,7 +129,7 @@ ActiveObject.prototype.action = function()
 	}
 	if (this.vy != 0)
 	{
-		for (iv = 1; iv <= Math.abs(this.vy); iv++)
+		for (var i = 1; i <= Math.abs(this.vy); i++)
 		{
 			if (this.vy > 0) this.y++;
 			else this.y--;

@@ -4,14 +4,14 @@ function loop()
 {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	//Correct the visibility
-	for (i = 0; i < obj.length; i++)
+	for (var i = 0; i < obj.length; i++)
 	{
 		obj[i].visibility(obj[i].testCollisionC(cx, cy, canvas.width, canvas.height, obj[i].h+500));
 	}
 	
 	//Find active objects
 	obj3.length = 0;
-	for (i = 0; i < obj2.length; i++)
+	for (var i = 0; i < obj2.length; i++)
 	{
 		if (obj2[i].blocks) obj3[obj3.length] = obj2[i];
 	}
@@ -20,7 +20,7 @@ function loop()
 	if (battle && turn == null)
 	{
 		
-		for (i = 0; i < obj3.length; i++)
+		for (var i = 0; i < obj3.length; i++)
 		{
 			if (obj3[i].ready >= 100)
 			{
@@ -35,11 +35,11 @@ function loop()
 	//Active objects routines
 	fightingObjects = 0;
 	
-	for (i = 0; i < obj3.length; i++)
+	for (var i = 0; i < obj3.length; i++)
 	{
 		if (!freezeGame)
 		{
-			for (j = 0; j < obj3[i].blocks.length; j++) obj3[i].blocks[j].loop(obj3[i]);
+			for (var j = 0; j < obj3[i].blocks.length; j++) obj3[i].blocks[j].loop(obj3[i]);
 			obj3[i].ai();
 			
 			if (!battle || turn == obj3[i]) obj3[i].action();
@@ -49,7 +49,7 @@ function loop()
 	if (fightingObjects <= 0) battle = false;
 	//Look for dead objects
 	if (hero.HP <= 0) showNotification("Oh no! Hero has died. Because of you, you bastard!");
-	for (i = 0; i < obj3.length; i++)
+	for (var i = 0; i < obj3.length; i++)
 	{
 		if (obj3[i].HP > obj3[i].MaxHP) obj3[i].HP = obj3[i].MaxHP;
 		if (obj3[i].HP <= 0) obj3[i].die();
@@ -59,7 +59,7 @@ function loop()
 	while (anything)
 	{
 		anything = false;
-		for (j = 0; j < obj2.length-1; j++)
+		for (var j = 0; j < obj2.length-1; j++)
 		{
 			if (obj2[j].y > obj2[j+1].y)
 			{
@@ -79,6 +79,7 @@ function loop()
 	checkVicinity(getSectorX(cx), getSectorY(cy), 1);
 	//Counter for drawImage operations
 	ct = 0;
+	var i;
 	for (i = 0; i < terrain.length; i++)
 	{
 		if (terrain[i].position == 0) terrain[i].draw();

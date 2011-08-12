@@ -21,19 +21,19 @@ function initEditor()
 		terrainWin = document.getElementById("terrain");
 		//addTerrain(new Terrain(loadImage("sand.png"), 50, 50, 0, 0, 50, 50, "#f3bd00"));
 		terrainEdit = -1;
-		var loopTimer = setInterval("loop()", 50);
+		setInterval("loop()", 50);
 	}
 }
 
 function generateSource()
 {
 	s = "";
-	for (i = 0; i < terrain.length; i++)
+	for (var i = 0; i < terrain.length; i++)
 	{
 		s += "new Terrain(\""+terrain[i].img.src+"\", "+terrain[i].sw+", "+terrain[i].sh+", "+terrain[i].x+", "+terrain[i].y+", ";
 		s += terrain[i].w+", "+terrain[i].h+", \""+terrain[i].color+"\");";
 	}
-	for (i = 0; i < obj.length; i++)
+	for (var i = 0; i < obj.length; i++)
 	{
 		if (obj[i].blocks)
 		{
@@ -67,8 +67,8 @@ function loop()
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	context.save();
 	context.translate(-cx, -cy);
-	for (i = 0; i < terrain.length; i++) terrain[i].draw();
-	for (i = 0; i < obj.length; i++) 
+	for (var i = 0; i < terrain.length; i++) terrain[i].draw();
+	for (var i = 0; i < obj.length; i++) 
 	{
 		obj[i].draw();
 		if (mode == 0 || mode == 2)
@@ -99,7 +99,7 @@ function loop()
 		selection--;
 		terrainEdit --;
 		if (selection < 0) selection = dbName.length-1;
-		if (terrainEdit < 0) terrainEdit = terrain.length-1
+		if (terrainEdit < 0) terrainEdit = terrain.length-1;
 		refreshEdit2();
 		mouseObject = dbFunc[selection](0, 0);
 		key[65] = false;
@@ -192,7 +192,7 @@ function mouseMove(e)
 
 function mouseClick(e)
 {
-	for (j = 0; j < obj.length; j++) 
+	for (var j = 0; j < obj.length; j++) 
 	{
 		if (obj[j].x <= mouseX+cx && mouseX+cx <= obj[j].x+obj[j].w &&
 			obj[j].y <= mouseY+cy && mouseY+cy <= obj[j].y+obj[j].d) 

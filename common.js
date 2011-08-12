@@ -10,7 +10,7 @@ function loadImage(filename)
 	ctemp.onerror = function()
 	{
 		alert("common.js: cannot load image "+this.src);
-	}
+	};
 	return(ctemp);
 }
 

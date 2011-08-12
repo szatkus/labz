@@ -6,12 +6,12 @@ function showDialog(s)
 {
 	dialogWin = document.getElementById("dialog");
 	s2 = "<p>"+s+"<br>";
-	for (id = 0; id < answers.length; id++)
+	for (var i = 0; id < answers.length; i++)
 	{
-		s2 += (id+1)+". "+answers[id]+"<br>";
+		s2 += (i+1)+". "+answers[i]+"<br>";
 	}
 	if (answers.length == 0) s2 += "[press Q]";
-	s2 += "</p>"
+	s2 += "</p>";
 	dialogWin.innerHTML = s2;
 	dialogWin.style.top = (gameHeight-200)/2+"px";
 	dialogWin.style.left = (gameWidth-200)/2+"px";
@@ -55,7 +55,7 @@ nteract = function(a)
 				clearAnswers();
 				showDialog("Really?");
 			}
-		}
-	}
+		};
+	};
 
 

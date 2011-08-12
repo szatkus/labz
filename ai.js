@@ -3,14 +3,14 @@ function findTarget(a, require)
 	limit = 0;
 	do
 	{
-		ia = Math.round(Math.random()*(obj3.length-1))
+		ia = Math.round(Math.random()*(obj3.length-1));
 		limit++;
 	}
 	while (a.checkTeam(obj3[ia]) >= require && limit < 100);
 	if (a.checkTeam(obj3[ia]) < require)
 	{
 		a.target = obj3[ia];
-		setTeam(a.team, obj3[ia].team, -1)
+		setTeam(a.team, obj3[ia].team, -1);
 	}
 	if (a.target != null) addLog(a.name+" choose "+a.target.name);
 }
@@ -23,7 +23,7 @@ function updateWaypoint(a, x, y)
 		a.waypointY.length = 0;
 		a.waypointD.length = 0;
 		a.waypointX[0] = x;
-		a.waypointY[0] = y
+		a.waypointY[0] = y;
 		a.waypointD[0] = Math.round(Math.random()*3);
 	}
 }
@@ -33,13 +33,13 @@ function useSomething(a)
 	limit = 0;
 				do
 				{
-					ia = Math.round(Math.random()*(a.blocks.length-1))
+					ia = Math.round(Math.random()*(a.blocks.length-1));
 					limit++;
 				}
 				while (!a.blocks[ia].canUse(a, a.target) && limit < 100);
 				if (a.blocks[ia].canUse(a, a.target))
 				{
-					a.blocks[ia].use2(a, a.target)
+					a.blocks[ia].use2(a, a.target);
 					turn = null;
 					return true;
 				} else return false;
@@ -55,13 +55,13 @@ var dumbAIAggressive = function()
 			}
 			if (this.nearest("hero") < 600) 
 			{
-				for (ia = 0; ia < obj3.length; ia++)
+				for (var i = 0; i < obj3.length; i++)
 				{
-					if (this.checkTeam(obj3[ia]) < 1) setTeam(this.team, obj3[ia].team, -1);
+					if (this.checkTeam(obj3[i]) < 1) setTeam(this.team, obj3[i].team, -1);
 				}
 				startBattle();
 				this.waypointX[0] = 0;
-				this.waypointY[0] = 0
+				this.waypointY[0] = 0;
 				addLog(this.name+" attacks");
 				findTarget(this, 1);
 			}
@@ -83,7 +83,7 @@ var dumbAIAggressive = function()
 		}
 	}
 	
-}
+};
 
 function stroll(a, ex)
 {
@@ -114,7 +114,7 @@ var dumbAIPeace = function()
 			}
 		} 
 	}
-}
+};
 
 ActiveObject.prototype.go = function()
 {
@@ -129,7 +129,7 @@ ActiveObject.prototype.go = function()
 	}
 	this.vx = ((this.waypointX[this.waypointX.length-1]-this.x)/dl)*this.speed;
 	this.vy = ((this.waypointY[this.waypointY.length-1]-this.y)/dl)*this.speed;
-}
+};
 
 ActiveObject.prototype.findRoute = function(x1, y1, x2, y2)
 {
@@ -175,23 +175,23 @@ ActiveObject.prototype.findRoute = function(x1, y1, x2, y2)
 		ty1 = this.waypointY[ia];
 		tx2 = this.waypointX[ia-1];
 		ty2 = this.waypointY[ia-1];
-		for (ib = 0; ib < obj2.length; ib++)
+		for (var i = 0; i < obj2.length; i++)
 		{
-			if (obj2[ib].testLineCollision(this.waypointX[ia], this.waypointY[ia], this.waypointX[ia-1], this.waypointY[ia-1]))
+			if (obj2[i].testLineCollision(this.waypointX[ia], this.waypointY[ia], this.waypointX[ia-1], this.waypointY[ia-1]))
 			{
-				if (obj2[ib] != this && obj2[ib] != this.target && (best == null || 
-					obj2[ib].getDLC(this.waypointX[ia], this.waypointY[ia]) < best.getDLC(this.waypointX[ia], this.waypointY[ia])))
-					best = obj2[ib];
+				if (obj2[i] != this && obj2[i] != this.target && (best == null || 
+					obj2[i].getDLC(this.waypointX[ia], this.waypointY[ia]) < best.getDLC(this.waypointX[ia], this.waypointY[ia])))
+					best = obj2[i];
 			}
 		}
 		addLog(ia);
 		if (best != null)
 		{
-			for (ib = this.waypointX.length-1; ib >= ia; ib--)
+			for (var i = this.waypointX.length-1; i >= ia; i--)
 			{
-				this.waypointX[ib+2] = this.waypointX[ib];
-				this.waypointY[ib+2] = this.waypointY[ib];
-				this.waypointD[ib+2] = this.waypointD[ib];
+				this.waypointX[i+2] = this.waypointX[i];
+				this.waypointY[i+2] = this.waypointY[i];
+				this.waypointD[i+2] = this.waypointD[i];
 			}
 			by = 0;
 			bx = 0;
@@ -258,9 +258,9 @@ ActiveObject.prototype.findRoute = function(x1, y1, x2, y2)
 			}
 			ia+=3;
 		}
-		ia--
+		ia--;
 		limit++;
 	}
 	this.ghost = false;
 		this.target.ghost = false;
-}
+};

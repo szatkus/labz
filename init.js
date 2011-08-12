@@ -1,8 +1,10 @@
 var sukin;
+var context;
+var canvas;
 
 function init()
 {
-	canvas = document.getElementById("screen")
+	canvas = document.getElementById("screen");
 	if (canvas.getContext)
 	{
 		context = canvas.getContext("2d");
@@ -27,7 +29,7 @@ function initGame()
 		initHero(1000, 1000);
 		//addObject(createDog(1300, 1000));
 		checkSector(0, 0);
-		var loopTimer = setInterval("loop()", 50);
+		setInterval("loop()", 50);
 		setInterval("countFPS()", 1000);
 	}
 }

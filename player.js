@@ -50,12 +50,12 @@ function playerControl()
 	} else document.getElementById("log").style.display="none";
 	if (key[32]) 
 	{
-		for (ii = 0; ii < obj3.length; ii++)
+		for (var i = 0; ii < obj3.length; i++)
 		{
-			if (hero.testCollision(obj3[ii], 50))
+			if (hero.testCollision(obj3[i], 50))
 			{
-				obj3[ii].interact(hero);
-				ii = obj3.length;
+				obj3[i].interact(hero);
+				i = obj3.length;
 			}
 		}
 		key[32] = false;
@@ -63,10 +63,10 @@ function playerControl()
 	//Change selection
 	if ((key[67] || select >= hero.blocks.length) && hero.blocks.length > 0)
 	{
-		i = select;
+		var i = select;
 		select++;
 		if (select >= hero.blocks.length) select = 0;
-		limit = 0;
+		var limit = 0;
 		while (hero.blocks[select].use == nullUse && i != select && limit < hero.blocks.length*2)
 		{
 			select++;
@@ -87,7 +87,7 @@ function playerControl()
 	//Change target
 	if (key[88] || hero.target == null) 
 	{
-		for (i = 0; i < obj3.length && obj3[i] != hero.target; i++);
+		for (var i = 0; i < obj3.length && obj3[i] != hero.target; i++);
 		i++;
 		if (i >= obj3.length) i = 0;
 		if (obj3[i] == hero) i++;
@@ -116,7 +116,7 @@ function playerControl()
 	//Hide message
 	if (key[81]) 
 	{
-		showMessage = false
+		showMessage = false;
 		if (answers.length == 0) hideDialog();
 		key[81] = false;
 		if (hero.HP <= 0) location.href = "gameover.html?"+saveCharacter(hero);
@@ -124,17 +124,17 @@ function playerControl()
 	//Toggle testRange
 	if (key[82]) 
 	{
-		testRange = !testRange
+		testRange = !testRange;
 		key[82] = false;
 	}
 	//Select answer
-	for (ip = 1; ip < 10; ip++)
+	for (var i = 1; i < 10; i++)
 	{
-		if (key[48+ip]) 
+		if (key[48+i]) 
 		{
-			answer(answers[ip-1]);
+			answer(answers[i-1]);
 		}
-		key[48+ip] = false;
+		key[48+i] = false;
 	}
 	//Skip turn
 	if (key[71] && turn == hero) 

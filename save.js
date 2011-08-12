@@ -1,9 +1,9 @@
 function saveCharacter(a)
 {
 	s = a.name+".";
-	for (is = 0; is < a.blocks.length; is++)
+	for (var i = 0; i < a.blocks.length; i++)
 	{
-		s += getBlockId(a.blocks[is].name)+"."+(a.blocks[is].exp*100+a.blocks[is].level)+",";
+		s += getBlockId(a.blocks[i].name)+"."+(a.blocks[i].exp*100+a.blocks[i].level)+",";
 	}
 	return s;
 }
@@ -20,9 +20,9 @@ function loadCharacter(s)
 	a = new ActiveObject(s.substring(0, s.indexOf(".")));
 	s = s.substring(s.indexOf(".")+1);
 	q = s.split(",");
-	for (is = 0; is < q.length; is++)
+	for (var i = 0; i < q.length; i++)
 	{
-		q2 = q[is].split(".");
+		q2 = q[i].split(".");
 		if (q2.length == 2)
 		{
 			btemp = blocks[parseInt(q2[0])];

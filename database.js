@@ -15,7 +15,7 @@ function initDatabase()
 		dtemp.ai = dumbAIAggressive;
 		dtemp.team = TEAM_DOGS;
 		return dtemp;
-	}
+	};
 	dbName[dbName.length] = "traveler";
 	dbFunc[dbFunc.length] = function(x, y)
 	{
@@ -28,7 +28,7 @@ function initDatabase()
 		dtemp.ai = dumbAIPeace;
 		dtemp.team = TEAM_PEOPLE;
 		return dtemp;
-	}
+	};
 	dbName[dbName.length] = "rock";
 	dbFunc[dbFunc.length] = function(x, y)
 	{
@@ -36,7 +36,7 @@ function initDatabase()
 		dtemp.setSize(x, y, 0, 64, 64, 32);
 		dtemp.img = loadImage("rock.png");
 		return(dtemp);
-	}
+	};
 	dbName[dbName.length] = "pond";
 	dbFunc[dbFunc.length] = function(x, y)
 	{
@@ -44,7 +44,7 @@ function initDatabase()
 		dtemp.setSize(x, y, 0, 128, 128, 128);
 		dtemp.img = loadImage("pond.png");
 		return(dtemp);
-	}
+	};
 	dbName[dbName.length] = "wallh";
 	dbFunc[dbFunc.length] = function(x, y)
 	{
@@ -52,7 +52,7 @@ function initDatabase()
 		dtemp.setSize(x, y, 0, 77, 128, 32);
 		dtemp.img = loadImage("wall2.png");
 		return(dtemp);
-	}
+	};
 	dbName[dbName.length] = "wallv";
 	dbFunc[dbFunc.length] = function(x, y)
 	{
@@ -60,7 +60,7 @@ function initDatabase()
 		dtemp.setSize(x, y, 0, 16, 173, 77);
 		dtemp.img = loadImage("wall.png");
 		return(dtemp);
-	}
+	};
 	dbName[dbName.length] = "palm";
 	dbFunc[dbFunc.length] = function(x, y)
 	{
@@ -68,14 +68,14 @@ function initDatabase()
 		dtemp.setSize(x, y, 0, 64, 128, 48);
 		dtemp.img = loadImage("palm.png");
 		return(dtemp);
-	}
+	};
 }
 
 function createObject(name, x, y)
 {
-	for (idb = 0; idb < dbName.length; idb++)
+	for (var i = 0; i < dbName.length; i++)
 	{
-		if (dbName[idb] == name) return dbFunc[idb](x,y);
+		if (dbName[i] == name) return dbFunc[i](x,y);
 	}
 	return null;
 }

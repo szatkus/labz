@@ -1,12 +1,12 @@
-nullUse = function(a, b) {return false;}
+nullUse = function(a, b) {return false;};
 
 
 function checkRangeC(x1, y1, x2, y2, range)
 {
 	if (Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2)) > range) return false;
-	for (ib = 0; ib < obj2.length; ib++)
+	for (var i = 0; i < obj2.length; i++)
 	{
-		if (!obj2[ib].ghost && obj2[ib].h-obj2[ib].d > 8 && obj2[ib].testLineCollision(x1, y1, x2, y2)) return false;
+		if (!obj2[i].ghost && obj2[i].h-obj2[i].d > 8 && obj2[i].testLineCollision(x1, y1, x2, y2)) return false;
 	}
 	return true;
 }
@@ -15,7 +15,7 @@ function checkRangeO(a, b, range)
 {
 	a.ghost = true;
 	b.ghost = true;
-	cbtemp = checkRangeC(a.x+a.w/2, a.y+a.d/2, b.x+b.w/2, b.y+b.d/2, range+a.w/2+b.w/2)
+	cbtemp = checkRangeC(a.x+a.w/2, a.y+a.d/2, b.x+b.w/2, b.y+b.d/2, range+a.w/2+b.w/2);
 	a.ghost = false;
 	b.ghost = false;
 	return cbtemp;
@@ -39,15 +39,15 @@ function Block(name)
 		this.turnOff(this.user);
 		this.bonusLevel += x;
 		this.turnOn(this.user);
-	}
+	};
 	this.getReqExp = function()
 	{
 		return((this.a*this.level+this.b));
-	}
+	};
 	this.getLevel = function()
 	{
 		return(this.level+this.bonusLevel);
-	}
+	};
 	this.addExp = function (x)
 	{
 		this.exp += x;
@@ -59,10 +59,10 @@ function Block(name)
 			this.level++;
 			this.turnOn(this.user);
 		}
-		for (ib = 0; ib < this.depends.length; ib++) this.user.findBlock(this.depends[ib]).addExp(x);
-	}
-	this.turnOn = function(a) {this.user = a;this.turnOn2();return(true);}
-	this.turnOn2 = function() {}
+		for (var i = 0; i < this.depends.length; i++) this.user.findBlock(this.depends[i]).addExp(x);
+	};
+	this.turnOn = function(a) {this.user = a;this.turnOn2();return(true);};
+	this.turnOn2 = function() {};
 	this.use = nullUse;
 	this.use2 = function(a, b)
 	{
@@ -73,15 +73,15 @@ function Block(name)
 			return(this.use(a, b));
 		}
 		else return(false);
-	}
+	};
 	this.canUse = function(a, b)
 	{
 		return(this.canUse2(a,b) && (a.ap >= this.ap || !battle) && checkRangeO(a, b, this.range));
-	}
-	this.canUse2 = function(a, b) {return(true);}
-	this.loop = function(a) {}
-	this.turnOff = function(a) {this.turnOff2();return(true);}
-	this.turnOff2 = function() {}
+	};
+	this.canUse2 = function(a, b) {return(true);};
+	this.loop = function(a) {};
+	this.turnOff = function(a) {this.turnOff2();return(true);};
+	this.turnOff2 = function() {};
 }
 
 nullBlock = new Block("null");
@@ -99,7 +99,7 @@ function newStamina()
 	{
 		this.user.MaxHP += this.getLevel();
 		return true;
-	}
+	};
 	stamina.loop = function()
 	{
 		if (this.user.HP < this.lastState)
@@ -108,12 +108,12 @@ function newStamina()
 		}
 		this.lastState = this.user.HP;
 		return true;
-	}
+	};
 	stamina.turnOff2 = function()
 	{
 		this.user.MaxHP -= this.getLevel();
 		return true;
-	}
+	};
 	return stamina;
 }
 
@@ -130,7 +130,7 @@ function newReflex()
 			a.ready += this.getLevel();
 			this.addExp(1);
 		}
-	}
+	};
 	return temp;
 }
 
@@ -148,7 +148,7 @@ function newAction()
 			a.ap += this.getLevel();
 			this.addExp(1);
 		}
-	}
+	};
 	return temp;
 }
 
@@ -169,7 +169,7 @@ function newBite()
 	{
 		b.damage(a, damageBound(this.level, 2));
 		return(true);
-	}
+	};
 	return temp;
 }
 
@@ -186,7 +186,7 @@ function newPunch()
 		//playSound("pyk");
 		b.damage(a, damageBound(this.level, this.level+1));
 		return(true);
-	}
+	};
 	return temp;
 }
 
@@ -203,7 +203,7 @@ function newKick()
 		//playSound("pyk");
 		b.damage(a, damageBound(this.level*2, this.level+3));
 		return(true);
-	}
+	};
 	return temp;
 }
 
@@ -219,11 +219,11 @@ function newGlock()
 		b.damage(a, damageBound(15+this.user.findBlock("Pistols").getLevel()*2, 
 			this.user.findBlock("Pistols").getLevel()+8));
 		return(true);
-	}
+	};
 	temp.canUse2 = function(a, b)
 	{
 		return(a.findBlock("Pistols") != nullBlock);
-	}
+	};
 	return temp;
 }
 
@@ -240,9 +240,9 @@ var blocks = new Array();
 
 function getBlockId(name)
 {
-	for (ib = 0; ib < blocks.length; ib++)
+	for (var i = 0; i < blocks.length; i++)
 	{
-		if (blocks[ib].name == name) return ib;
+		if (blocks[i].name == name) return i;
 	}
 	return -1;
 }
@@ -264,14 +264,14 @@ function newHuman()
 		this.user.findBlock("Reflex").raise(20);
 		this.user.findBlock("Action").raise(7);
 		return true;
-	}
+	};
 	stamina.turnOff2 = function()
 	{
 		this.user.findBlock("Stamina").raise(-10);
 		this.user.findBlock("Reflex").raise(-20);
 		this.user.findBlock("Action").raise(-7);
 		return true;
-	}
+	};
 	return stamina;
 }
 
@@ -281,18 +281,18 @@ function newDog()
 	stamina.maxLevel = 1;
 	stamina.turnOn2 = function()
 	{
-		this.user.findBlock("Stamina").raise(5)
+		this.user.findBlock("Stamina").raise(5);
 		this.user.findBlock("Reflex").raise(30);
 		this.user.findBlock("Action").raise(9);
 		return true;
-	}
+	};
 	stamina.turnOff2 = function()
 	{
-		a.findBlock("Stamina").raise(-5)
+		a.findBlock("Stamina").raise(-5);
 		a.findBlock("Reflex").raise(-30);
 		a.findBlock("Action").raise(-9);
 		return true;
-	}
+	};
 	return stamina;
 }
 
